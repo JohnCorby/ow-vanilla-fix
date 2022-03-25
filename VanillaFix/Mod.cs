@@ -6,12 +6,6 @@ namespace VanillaFix
 {
     public class Mod : ModBehaviour
     {
-        public static Mod Instance { get; private set; }
-
-        private void Awake()
-        {
-            Instance = this;
-            Harmony.CreateAndPatchAll(Assembly.GetExecutingAssembly());
-        }
+        private void Awake() => Harmony.CreateAndPatchAll(Assembly.GetExecutingAssembly());
     }
 }
