@@ -8,7 +8,7 @@ namespace VanillaFix
     /// so the ship doesn't fall through things
     /// </summary>
     [HarmonyPatch(typeof(StreamingGroup))]
-    public static class StreamingGroupPatches
+    public static class BatchedColliderFix
     {
         [HarmonyPrefix]
         [HarmonyPatch(nameof(StreamingGroup.LoadRequiredColliders))]

@@ -11,7 +11,7 @@ namespace VanillaFix
     /// in vanilla, that becomes more wrong the smaller the screen is.
     /// </summary>
     [HarmonyPatch(typeof(CanvasMarker))]
-    public static class CanvasMarkerPatches
+    public static class CanvasMarkerFix
     {
         [HarmonyPrefix]
         [HarmonyPatch(nameof(CanvasMarker.IsOnScreen),
