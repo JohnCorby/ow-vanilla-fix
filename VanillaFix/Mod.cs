@@ -2,10 +2,9 @@
 using OWML.ModHelper;
 using System.Reflection;
 
-namespace VanillaFix
+namespace VanillaFix;
+
+public class Mod : ModBehaviour
 {
-    public class Mod : ModBehaviour
-    {
-        private void Awake() => Harmony.CreateAndPatchAll(Assembly.GetExecutingAssembly());
-    }
+    private void Awake() => Harmony.CreateAndPatchAll(Assembly.GetExecutingAssembly());
 }
