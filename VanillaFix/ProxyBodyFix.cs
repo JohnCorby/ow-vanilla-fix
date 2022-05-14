@@ -32,6 +32,17 @@ public static class ProxyBodyFix
     }
 
     [HarmonyPrefix]
+    [HarmonyPatch(typeof(ProxyBody), nameof(ProxyBody.OnEnterMapView))]
+    private static bool ProxyBody_OnEnterMapView(ProxyBody __instance)
+    {
+        __instance._outOfRange = false;
+        __instance.ToggleRendering(false);
+        __instance.enabled = false;
+
+        return false;
+    }
+
+    [HarmonyPrefix]
     [HarmonyPatch(typeof(ProxyOrbiter), nameof(ProxyOrbiter.Awake))]
     private static bool ProxyOrbiter_Awake(ProxyOrbiter __instance)
     {
