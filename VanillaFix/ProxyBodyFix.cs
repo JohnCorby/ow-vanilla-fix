@@ -11,55 +11,48 @@ public static class ProxyBodyFix
 {
     [HarmonyPrefix]
     [HarmonyPatch(typeof(ProxyBody), nameof(ProxyBody.Awake))]
-    private static bool ProxyBody_Awake(ProxyBody __instance)
+    private static void ProxyBody_Awake(ProxyBody __instance)
     {
-        LateInitializerManager.RegisterLateInitializer(__instance);
         GlobalMessenger.AddListener("EnterMapView", __instance.OnEnterMapView);
         GlobalMessenger.AddListener("ExitMapView", __instance.OnExitMapView);
-
-        return false;
     }
 
     [HarmonyPrefix]
     [HarmonyPatch(typeof(ProxyBody), nameof(ProxyBody.OnDestroy))]
-    private static bool ProxyBody_OnDestroy(ProxyBody __instance)
+    private static void ProxyBody_OnDestroy(ProxyBody __instance)
     {
         GlobalMessenger.RemoveListener("EnterMapView", __instance.OnEnterMapView);
         GlobalMessenger.RemoveListener("ExitMapView", __instance.OnExitMapView);
-        if (!__instance._initialized) LateInitializerManager.UnregisterLateInitializer(__instance);
-
-        return false;
     }
 
     [HarmonyPrefix]
     [HarmonyPatch(typeof(ProxyBody), nameof(ProxyBody.OnEnterMapView))]
-    private static bool ProxyBody_OnEnterMapView(ProxyBody __instance)
-    {
+    private static void ProxyBody_OnEnterMapView(ProxyBody __instance) =>
         __instance._outOfRange = false;
-        __instance.ToggleRendering(false);
-        __instance.enabled = false;
-
-        return false;
-    }
 
     [HarmonyPrefix]
     [HarmonyPatch(typeof(ProxyOrbiter), nameof(ProxyOrbiter.Awake))]
-    private static bool ProxyOrbiter_Awake(ProxyOrbiter __instance)
+    private static void ProxyOrbiter_Awake(ProxyOrbiter __instance)
     {
-        __instance._initialized = false;
         GlobalMessenger.AddListener("EnterMapView", __instance.OnEnterMapView);
         GlobalMessenger.AddListener("ExitMapView", __instance.OnExitMapView);
-
-        return false;
     }
 
     [HarmonyPrefix]
     [HarmonyPatch(typeof(ProxyOrbiter), nameof(ProxyOrbiter.OnDestroy))]
-    private static bool ProxyOrbiter_OnDestroy(ProxyOrbiter __instance)
+    private static void ProxyOrbiter_OnDestroy(ProxyOrbiter __instance)
     {
         GlobalMessenger.RemoveListener("EnterMapView", __instance.OnEnterMapView);
         GlobalMessenger.RemoveListener("ExitMapView", __instance.OnExitMapView);
-
-        return false;
     }
+
+    [HarmonyPrefix]
+    [HarmonyPatch(typeof(SunProxy), nameof(SunProxy.OnEnterMapView))]
+    private static void SunProxy_OnEnterMapView(SunProxy __instance) =>
+        __instance.enabled = false;
+
+    [HarmonyPrefix]
+    [HarmonyPatch(typeof(SunProxy), nameof(SunProxy.OnExitMapView))]
+    private static void SunProxy_OnExitMapView(SunProxy __instance) =>
+        __instance.enabled = true;
 }
