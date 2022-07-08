@@ -13,49 +13,49 @@ namespace VanillaFix;
 [HarmonyPatch(typeof(CanvasMarker))]
 public static class CanvasMarkerFix
 {
-    [HarmonyPrefix]
-    [HarmonyPatch(nameof(CanvasMarker.IsOnScreen),
-        new[] { typeof(Vector3), typeof(Vector2) },
-        new[] { ArgumentType.Normal, ArgumentType.Ref })]
-    private static bool IsOnScreen(CanvasMarker __instance, out bool __result,
-        Vector3 targetWorldPos, ref Vector2 onScreenPos)
-    {
-        onScreenPos.x = 0f;
-        onScreenPos.y = 0f;
+	[HarmonyPrefix]
+	[HarmonyPatch(nameof(CanvasMarker.IsOnScreen),
+		new[] { typeof(Vector3), typeof(Vector2) },
+		new[] { ArgumentType.Normal, ArgumentType.Ref })]
+	private static bool IsOnScreen(CanvasMarker __instance, out bool __result,
+		Vector3 targetWorldPos, ref Vector2 onScreenPos)
+	{
+		onScreenPos.x = 0f;
+		onScreenPos.y = 0f;
 
-        __result = false;
+		__result = false;
 
-        if (__instance._prevMarker == null)
-        {
-            var camera = __instance._canvas.worldCamera;
-            if (camera == null)
-                camera = Locator.GetActiveCamera().mainCamera;
+		if (__instance._prevMarker == null)
+		{
+			var camera = __instance._canvas.worldCamera;
+			if (camera == null)
+				camera = Locator.GetActiveCamera().mainCamera;
 
-            var canvasPos = __instance._canvas.WorldToCanvasPosition(camera, targetWorldPos);
+			var canvasPos = __instance._canvas.WorldToCanvasPosition(camera, targetWorldPos);
 
-            var width = __instance._canvas.pixelRect.width * (1080 / __instance._canvas.pixelRect.height);
-            var height = 1080 - __instance.GetTotalMarkerHeight();
+			var width = __instance._canvas.pixelRect.width * (1080 / __instance._canvas.pixelRect.height);
+			var height = 1080 - __instance.GetTotalMarkerHeight();
 
-            var screenSize = __instance.GetMarkerTargetScreenSize() * 0.5f;
-            screenSize = Mathf.Clamp(screenSize, 0f, height - canvasPos.y);
+			var screenSize = __instance.GetMarkerTargetScreenSize() * 0.5f;
+			screenSize = Mathf.Clamp(screenSize, 0f, height - canvasPos.y);
 
-            canvasPos.y += screenSize;
+			canvasPos.y += screenSize;
 
-            onScreenPos.x = canvasPos.x;
-            onScreenPos.y = canvasPos.y;
+			onScreenPos.x = canvasPos.x;
+			onScreenPos.y = canvasPos.y;
 
-            if (canvasPos.x >= 0f &&
-                canvasPos.x <= width &&
-                canvasPos.y >= 0f &&
-                canvasPos.y <= height &&
-                canvasPos.z > 0f)
-                __result = true;
-        }
-        else
-        {
-            __result = __instance._prevMarker.IsOnScreen() && __instance.IsVisible();
-        }
+			if (canvasPos.x >= 0f &&
+				canvasPos.x <= width &&
+				canvasPos.y >= 0f &&
+				canvasPos.y <= height &&
+				canvasPos.z > 0f)
+				__result = true;
+		}
+		else
+		{
+			__result = __instance._prevMarker.IsOnScreen() && __instance.IsVisible();
+		}
 
-        return false;
-    }
+		return false;
+	}
 }
