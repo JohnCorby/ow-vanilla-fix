@@ -9,46 +9,47 @@ namespace VanillaFix;
 [HarmonyPatch(typeof(PlayerState))]
 public static class PlayerStateFix
 {
-	[HarmonyPostfix]
+	[HarmonyPrefix]
 	[HarmonyPatch(nameof(PlayerState.Reset))]
-	private static void Reset()
+	private static bool Reset()
 	{
-		PlayerState._hasPlayerEnteredShip = false;
-		PlayerState._isWearingSuit = false;
-		PlayerState._alignedWithField = false;
-		PlayerState._insideShip = false;
-		PlayerState._insideShuttle = false;
-		PlayerState._atFlightConsole = false;
-		PlayerState._isCameraUnderwater = false;
-		PlayerState._isDead = false;
-		PlayerState._isResurrected = false;
-		PlayerState._isAttached = false;
-		PlayerState._usingTelescope = false;
-		PlayerState._usingShipComputer = false;
-		PlayerState._inLandingView = false;
-		PlayerState._mapView = false;
-		PlayerState._inBrambleDimension = false;
-		PlayerState._inGiantsDeep = false;
-		PlayerState._isFlashlightOn = false;
-		PlayerState._inDarkZone = false;
-		PlayerState._inConversation = false;
-		PlayerState._inZeroGTraining = false;
-		PlayerState._isCameraLockedOn = false;
-		PlayerState._isHullBreached = false;
-		PlayerState._usingNomaiRemoteCamera = false;
-		PlayerState._insideTheEye = false;
-		PlayerState._isSleepingAtCampfire = false;
-		PlayerState._isSleepingAtDreamCampfire = false;
-		PlayerState._isFastForwarding = false;
-		PlayerState._inCloakingField = false;
-		PlayerState._inDreamWorld = false;
-		PlayerState._hasPlayerhadLanternBlownOut = false;
-		PlayerState._viewingProjector = false;
-		PlayerState._isPeeping = false;
-		PlayerState._isGrabbedByGhost = false;
-		PlayerState._lastDetachTime = 0;
-		PlayerState._undertowVolumeCount = 0;
-		PlayerState._playerFogWarpDetector = null;
-		PlayerState._quantumMoon = null;
+		PlayerState._hasPlayerEnteredShip = default;
+		PlayerState._isWearingSuit = default;
+		PlayerState._alignedWithField = default;
+		PlayerState._insideShip = default;
+		PlayerState._insideShuttle = default;
+		PlayerState._atFlightConsole = default;
+		PlayerState._isCameraUnderwater = default;
+		PlayerState._isDead = default;
+		PlayerState._isResurrected = default;
+		PlayerState._isAttached = default;
+		PlayerState._usingTelescope = default;
+		PlayerState._usingShipComputer = default;
+		PlayerState._inLandingView = default;
+		PlayerState._mapView = default;
+		PlayerState._inBrambleDimension = default;
+		PlayerState._inGiantsDeep = default;
+		PlayerState._isFlashlightOn = default;
+		PlayerState._inDarkZone = default;
+		PlayerState._inConversation = default;
+		PlayerState._inZeroGTraining = default;
+		PlayerState._isCameraLockedOn = default;
+		PlayerState._isHullBreached = default;
+		PlayerState._usingNomaiRemoteCamera = default;
+		PlayerState._insideTheEye = default;
+		PlayerState._isSleepingAtCampfire = default;
+		PlayerState._isSleepingAtDreamCampfire = default;
+		PlayerState._isFastForwarding = default;
+		PlayerState._inCloakingField = default;
+		PlayerState._inDreamWorld = default;
+		PlayerState._hasPlayerhadLanternBlownOut = default;
+		PlayerState._viewingProjector = default;
+		PlayerState._isPeeping = default;
+		PlayerState._isGrabbedByGhost = default;
+		PlayerState._lastDetachTime = default;
+		PlayerState._undertowVolumeCount = default;
+		PlayerState._playerFogWarpDetector = default;
+		PlayerState._quantumMoon = default;
+		return false;
 	}
 }
