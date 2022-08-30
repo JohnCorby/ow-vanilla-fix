@@ -1,4 +1,5 @@
 ﻿using HarmonyLib;
+using UnityEngine;
 
 namespace VanillaFix;
 
@@ -55,4 +56,9 @@ public static class ProxyBodyFix
 	[HarmonyPatch(typeof(SunProxy), nameof(SunProxy.OnExitMapView))]
 	private static void SunProxy_OnExitMapView(SunProxy __instance) =>
 		__instance.enabled = true;
+
+	[HarmonyPostfix]
+	[HarmonyPatch(typeof(SunProxyEffectController), nameof(SunProxyEffectController.UpdateScales))]
+	private static void SunProxyEffectController_UpdateScales(SunProxyEffectController __instance, Vector3 atmosphereScale) =>
+		__instance._atmosphere.transform.localScale = atmosphereScale;
 }
