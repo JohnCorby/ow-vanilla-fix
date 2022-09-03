@@ -61,8 +61,11 @@ public static class ProxyBodyFix
 
 	[HarmonyPostfix]
 	[HarmonyPatch(typeof(SunProxyEffectController), nameof(SunProxyEffectController.UpdateScales))]
-	private static void SunProxyEffectController_UpdateScales(SunProxyEffectController __instance, Vector3 atmosphereScale) =>
-		// for some reason they do atmosphereScale * 2 in base game, which makes the atmosphere not show up
+	private static void SunProxyEffectController_UpdateScales(SunProxyEffectController __instance, Vector3 atmosphereScale)
+	{
 		// CREDIT TO MEGAPIGGY FOR THIS FIX
-		__instance._atmosphere.transform.localScale = atmosphereScale;
+		// for some reason they do atmosphereScale * 2 in base game, which makes the atmosphere not show up
+		if (__instance._atmosphere)
+			__instance._atmosphere.transform.localScale = atmosphereScale;
+	}
 }
