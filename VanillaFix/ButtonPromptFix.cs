@@ -17,6 +17,8 @@ public static class ButtonPromptFix
         ButtonPromptLibrary.s_keyCodeDict[KeyCode.Equals] = Mod.EqualsButton;
         ButtonPromptLibrary.s_keyCodeDict[KeyCode.KeypadEquals] = Mod.EqualsButton;
         ButtonPromptLibrary.s_keyCodeDict[KeyCode.Comma] = Mod.CommaButton;
+        ButtonPromptLibrary.s_keyCodeDict[KeyCode.Period] = Mod.PeriodButton;
+        ButtonPromptLibrary.s_keyCodeDict[KeyCode.KeypadPeriod] = Mod.PeriodButton;
         ButtonPromptLibrary.s_keyCodeDict[KeyCode.AltGr] = Mod.AltGrButton;
     }
 }

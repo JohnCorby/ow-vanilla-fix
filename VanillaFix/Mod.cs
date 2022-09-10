@@ -10,6 +10,7 @@ public class Mod : ModBehaviour
 {
 	public static Texture2D EqualsButton { get; private set; }
 	public static Texture2D CommaButton { get; private set; }
+	public static Texture2D PeriodButton { get; private set; }
 	public static Texture2D AltGrButton { get; private set; }
 
 	private void Awake() => Harmony.CreateAndPatchAll(Assembly.GetExecutingAssembly());
@@ -18,6 +19,7 @@ public class Mod : ModBehaviour
 	{
 		EqualsButton = CreateButtonTexture("Keyboard_Black_Equals");
 		CommaButton = CreateButtonTexture("Keyboard_Black_Comma");
+		PeriodButton = CreateButtonTexture("Keyboard_Black_Period");
 		AltGrButton = CreateButtonTexture("Keyboard_Black_AltGr");
 	}
 
