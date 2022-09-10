@@ -28,6 +28,9 @@
     <Content Include="VanillaFix.csproj.user" />
   </ItemGroup>
   <ItemGroup>
+    <None Update="Keyboard_Black_AltGr.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Update="Keyboard_Black_Equals.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
