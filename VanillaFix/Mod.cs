@@ -13,6 +13,7 @@ public class Mod : ModBehaviour
 	public static Texture2D PeriodButton { get; private set; }
 	public static Texture2D AltGrButton { get; private set; }
 	public static Texture2D BackquoteButton { get; private set; }
+	public static Texture2D AppleButton { get; private set; }
 
 	private void Awake() => Harmony.CreateAndPatchAll(Assembly.GetExecutingAssembly());
 
@@ -23,6 +24,7 @@ public class Mod : ModBehaviour
 		PeriodButton = CreateButtonTexture("Keyboard_Black_Period");
 		AltGrButton = CreateButtonTexture("Keyboard_Black_AltGr");
 		BackquoteButton = CreateButtonTexture("Keyboard_Black_Backquote");
+		AppleButton = CreateButtonTexture("Keyboard_Black_Apple");
 	}
 
 	private Texture2D CreateButtonTexture(string name)

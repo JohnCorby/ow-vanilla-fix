@@ -31,6 +31,9 @@
     <None Update="Keyboard_Black_AltGr.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Update="Keyboard_Black_Apple.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Update="Keyboard_Black_Backquote.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>

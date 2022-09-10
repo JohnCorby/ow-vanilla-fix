@@ -21,5 +21,7 @@ public static class ButtonPromptFix
         ButtonPromptLibrary.s_keyCodeDict[KeyCode.KeypadPeriod] = Mod.PeriodButton;
         ButtonPromptLibrary.s_keyCodeDict[KeyCode.AltGr] = Mod.AltGrButton;
         ButtonPromptLibrary.s_keyCodeDict[KeyCode.BackQuote] = Mod.BackquoteButton;
+        ButtonPromptLibrary.s_keyCodeDict[KeyCode.LeftApple] = Mod.AppleButton;
+        ButtonPromptLibrary.s_keyCodeDict[KeyCode.RightApple] = Mod.AppleButton;
     }
 }
