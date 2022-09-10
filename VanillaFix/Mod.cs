@@ -9,6 +9,7 @@ namespace VanillaFix;
 public class Mod : ModBehaviour
 {
 	public static Texture2D EqualsButton { get; private set; }
+	public static Texture2D CommaButton { get; private set; }
 	public static Texture2D AltGrButton { get; private set; }
 
 	private void Awake() => Harmony.CreateAndPatchAll(Assembly.GetExecutingAssembly());
@@ -16,6 +17,7 @@ public class Mod : ModBehaviour
 	private void Start()
 	{
 		EqualsButton = CreateButtonTexture("Keyboard_Black_Equals");
+		CommaButton = CreateButtonTexture("Keyboard_Black_Comma");
 		AltGrButton = CreateButtonTexture("Keyboard_Black_AltGr");
 	}
 
