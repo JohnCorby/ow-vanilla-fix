@@ -4,6 +4,8 @@ using UnityEngine;
 namespace VanillaFix;
 
 /// <summary>
+/// CREDIT TO MEGAPIGGY FOR THIS FIX
+/// 
 /// ButtonPromptLibrary is missing a few button textures.
 /// this adds one.
 /// </summary>
