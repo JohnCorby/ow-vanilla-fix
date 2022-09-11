@@ -32,7 +32,7 @@ public class Mod : ModBehaviour
 		var texture = new Texture2D(2, 2, TextureFormat.RGBA32, false);
 		texture.name = name;
 		texture.wrapMode = TextureWrapMode.Clamp;
-		texture.LoadImage(File.ReadAllBytes(Path.Combine(ModHelper.Manifest.ModFolderPath, name + ".png")));
+		texture.LoadImage(File.ReadAllBytes(Path.Combine(ModHelper.Manifest.ModFolderPath, "Buttons", name + ".png")));
 		return texture;
 	}
 }
