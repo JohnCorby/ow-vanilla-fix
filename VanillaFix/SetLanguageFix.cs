@@ -8,7 +8,7 @@ namespace VanillaFix;
 [HarmonyPatch(typeof(TextTranslation))]
 public static class SetLanguageFix
 {
-	[HarmonyPostfix]
+	[HarmonyPrefix]
 	[HarmonyPatch(nameof(TextTranslation.SetLanguage))]
 	public static bool SetLanguage(TextTranslation __instance, TextTranslation.Language lang) =>
 		// don't do language things if we didn't actually change the language
