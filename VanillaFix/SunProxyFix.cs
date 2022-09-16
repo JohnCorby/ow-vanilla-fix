@@ -5,6 +5,7 @@ namespace VanillaFix;
 
 /// <summary>
 /// CREDIT TO MEGAPIGGY FOR THIS FIX
+///
 /// for some reason they do atmosphereScale * 2 in base game, which makes the atmosphere not show up
 /// </summary>
 [HarmonyPatch(typeof(SunProxyEffectController))]
