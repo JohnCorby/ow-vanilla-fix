@@ -12,6 +12,6 @@ public static class BackgroundInputFix
 {
 	[HarmonyPostfix]
 	[HarmonyPatch(nameof(OWInput.Awake))]
-	public static void Awake(OWInput __instance) =>
+	private static void Awake(OWInput __instance) =>
 		InputSystem.settings.backgroundBehavior = InputSettings.BackgroundBehavior.ResetAndDisableAllDevices;
 }

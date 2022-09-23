@@ -14,7 +14,7 @@ public static class ButtonPromptFix
 {
 	[HarmonyPostfix]
 	[HarmonyPatch(nameof(ButtonPromptLibrary.Initialize))]
-	public static void Initialize()
+	private static void Initialize()
 	{
 		ButtonPromptLibrary.s_keyCodeDict[KeyCode.Equals] = Mod.EqualsButton;
 		ButtonPromptLibrary.s_keyCodeDict[KeyCode.KeypadEquals] = Mod.EqualsButton;
