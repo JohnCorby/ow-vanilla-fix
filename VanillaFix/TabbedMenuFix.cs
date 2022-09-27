@@ -3,6 +3,9 @@ using UnityEngine.UI;
 
 namespace VanillaFix;
 
+/// <summary>
+/// TabbedMenu.Deactivate NRE's when Locator.GetEventSystem().currentSelectedGameObject is null (which it is for the owml mod sub menu)
+/// </summary>
 [HarmonyPatch]
 public class TabbedMenuFix
 {
