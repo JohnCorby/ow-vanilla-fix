@@ -9,4 +9,3 @@ Fixes some vanilla bugs in Outer Wilds
 - Adds some missing button prompt textures. (credit to MegaPiggy)
 - Prevents SetLanguage from being called when it shouldn't be, fixing several mods.
 - Lets input turn off when the game isn't in focus, meaning mods that turn on runInBackground work.
-- Makes OWML mod menu actually closeable (OWML makes nested menus which breaks things in patch 13)
