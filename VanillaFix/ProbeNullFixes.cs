@@ -8,6 +8,7 @@ namespace VanillaFix;
 /// </summary>
 public static class ProbeNullFixes
 {
+	// NomaiWarpStreaming.FixedUpdate calls this without a null check
 	[HarmonyPrefix]
 	[HarmonyPatch(nameof(SurveyorProbe.IsLaunched))]
 	private static bool SurveyorProbe_IsLaunched(SurveyorProbe __instance, out bool __result)
