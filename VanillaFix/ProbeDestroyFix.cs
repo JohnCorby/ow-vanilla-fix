@@ -5,7 +5,7 @@ namespace VanillaFix;
 
 /// <summary>
 /// Prevent the probe from being destroyed when it's anchored to something that's destroyed,
-/// fixing (presumably) a plethora of NRE's.
+/// fixing (presumably) a plethora of NREs.
 ///
 /// Potentially laggy, idk.
 /// </summary>
