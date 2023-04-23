@@ -12,7 +12,7 @@ namespace VanillaFix;
 [HarmonyPatch(typeof(Object))]
 public static class ProbeDestroyFix
 {
-	[HarmonyPostfix]
+	[HarmonyPrefix]
 	[HarmonyPatch(nameof(Object.Destroy), typeof(Object), typeof(float))]
 	[HarmonyPatch(nameof(Object.Destroy), typeof(Object))]
 	[HarmonyPatch(nameof(Object.DestroyImmediate), typeof(Object), typeof(bool))]
