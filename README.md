@@ -10,3 +10,4 @@ Fixes some vanilla bugs in Outer Wilds
 - Prevents SetLanguage from being called when it shouldn't be, fixing several mods.
 - Lets input turn off when the game isn't in focus, meaning mods that turn on runInBackground work.
 - Fixes places where the probe is not null checked (since it can be destroyed).
+- Fixes NREs with ship logs and mods with custom facts (like The Outsider).

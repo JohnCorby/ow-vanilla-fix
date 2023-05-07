@@ -4,10 +4,10 @@ using System.Collections.Generic;
 namespace VanillaFix;
 
 /// <summary>
-/// PlayerState.Reset doesn't reset all the fields.
-/// this makes it do that.
+/// Some GetFact callers don't do null checks.
+/// TODO: remove when patch 14 since that fixes this
 /// </summary>
-[HarmonyPatch()]
+[HarmonyPatch]
 public static class NewlyRevealFixes
 {
 	// no im not doing a transpiler BLEHHHHHHHHH
