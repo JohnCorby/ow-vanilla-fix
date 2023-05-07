@@ -26,6 +26,7 @@ public static class NewlyRevealFixes
 				for (int j = i + 1; j < list.Count; j++)
 				{
 					ShipLogFact fact2 = __instance._manager.GetFact(list[j]);
+					if (fact2 == null) continue;
 					if (fact2.GetEntryID().Equals(fact.GetSourceID()) && !fact2.IsRumor())
 					{
 						list2.Add(fact2);
@@ -45,6 +46,7 @@ public static class NewlyRevealFixes
 				for (int k = i + 1; k < list.Count; k++)
 				{
 					ShipLogFact fact3 = __instance._manager.GetFact(list[k]);
+					if (fact3 == null) continue;
 					if (fact3.GetEntryID().Equals(fact.GetEntryID()) && !fact3.HasSource())
 					{
 						list2.Add(fact3);
