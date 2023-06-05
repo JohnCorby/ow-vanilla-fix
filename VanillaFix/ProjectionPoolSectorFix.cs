@@ -6,6 +6,8 @@ namespace VanillaFix;
 /// <summary>
 /// _visualSector2 doesn't do all the same checks _visualSector does.
 /// this means that sector stuff breaks in rare cases.
+///
+/// they also accidentally check the current visual sector instead of the paired visual sector.
 /// </summary>
 [HarmonyPatch(typeof(NomaiRemoteCameraPlatform))]
 public static class ProjectionPoolSectorFix
