@@ -1,4 +1,5 @@
 ﻿using HarmonyLib;
+using UnityEngine;
 
 namespace VanillaFix;
 
@@ -21,9 +22,9 @@ public static class ProjectionPoolSectorFix
 		__instance._alreadyOccupiedSectors.Clear();
 		if (__instance._slavePlatform._visualSector != null)
 		{
-			if (__instance._visualSector.ContainsOccupant(DynamicOccupant.Player))
+			if (__instance._slavePlatform._visualSector.ContainsOccupant(DynamicOccupant.Player))
 			{
-				__instance._alreadyOccupiedSectors.Add(__instance._visualSector);
+				__instance._alreadyOccupiedSectors.Add(__instance._slavePlatform._visualSector);
 			}
 			__instance._slavePlatform._visualSector.AddOccupant(Locator.GetPlayerSectorDetector());
 			Sector sector = __instance._slavePlatform._visualSector.GetParentSector();
@@ -39,9 +40,9 @@ public static class ProjectionPoolSectorFix
 		}
 		if (__instance._slavePlatform._visualSector2 != null)
 		{
-			if (__instance._visualSector2.ContainsOccupant(DynamicOccupant.Player))
+			if (__instance._slavePlatform._visualSector2.ContainsOccupant(DynamicOccupant.Player))
 			{
-				__instance._alreadyOccupiedSectors.Add(__instance._visualSector2);
+				__instance._alreadyOccupiedSectors.Add(__instance._slavePlatform._visualSector2);
 			}
 			__instance._slavePlatform._visualSector2.AddOccupant(Locator.GetPlayerSectorDetector());
 			Sector sector = __instance._slavePlatform._visualSector2.GetParentSector();
@@ -106,6 +107,42 @@ public static class ProjectionPoolSectorFix
 		GlobalMessenger.FireEvent("ExitNomaiRemoteCamera");
 		__instance._slavePlatform._ownedCamera.Deactivate();
 		__instance._slavePlatform._ownedCamera.SetImageEffectFade(0f);
+
+		return false;
+	}
+
+	[HarmonyPrefix]
+	[HarmonyPatch(typeof(NomaiRemoteCameraPlatform), nameof(NomaiRemoteCameraPlatform.VerifySectorOccupancy))]
+	private static bool NomaiRemoteCameraPlatform_VerifySectorOccupancy(NomaiRemoteCameraPlatform __instance)
+	{
+		if (__instance._slavePlatform._visualSector != null && !__instance._slavePlatform._visualSector.ContainsOccupant(DynamicOccupant.Player))
+		{
+			Debug.LogWarning("Player was somehow removed from the NomaiRemoteCameraPlatform's visual sectors!  Re-adding...");
+			__instance._slavePlatform._visualSector.AddOccupant(Locator.GetPlayerSectorDetector());
+			Sector sector = __instance._slavePlatform._visualSector.GetParentSector();
+			while (sector != null)
+			{
+				if (!sector.ContainsOccupant(DynamicOccupant.Player))
+				{
+					sector.AddOccupant(Locator.GetPlayerSectorDetector());
+				}
+				sector = sector.GetParentSector();
+			}
+		}
+		if (__instance._slavePlatform._visualSector2 != null && !__instance._slavePlatform._visualSector2.ContainsOccupant(DynamicOccupant.Player))
+		{
+			Debug.LogWarning("Player was somehow removed from the NomaiRemoteCameraPlatform's visual sectors!  Re-adding...");
+			__instance._slavePlatform._visualSector2.AddOccupant(Locator.GetPlayerSectorDetector());
+			Sector sector = __instance._slavePlatform._visualSector2.GetParentSector();
+			while (sector != null)
+			{
+				if (!sector.ContainsOccupant(DynamicOccupant.Player))
+				{
+					sector.AddOccupant(Locator.GetPlayerSectorDetector());
+				}
+				sector = sector.GetParentSector();
+			}
+		}
 
 		return false;
 	}
