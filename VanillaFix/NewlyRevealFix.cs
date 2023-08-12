@@ -12,7 +12,7 @@ public static class NewlyRevealFix
 {
 	[HarmonyPrefix]
 	[HarmonyPatch(nameof(PlayerData.GetNewlyRevealedFactIDs))]
-	private static void PlayerData_GetNewlyRevealedFactIDs()
+	private static void GetNewlyRevealedFactIDs()
 	{
 		if (!Locator.GetShipLogManager()) return;
 

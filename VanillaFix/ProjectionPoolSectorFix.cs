@@ -15,7 +15,7 @@ public static class ProjectionPoolSectorFix
 	// no im not doing a transpiler BLEHHHHHHHHH
 	[HarmonyPrefix]
 	[HarmonyPatch(typeof(NomaiRemoteCameraPlatform), nameof(NomaiRemoteCameraPlatform.SwitchToRemoteCamera))]
-	private static bool NomaiRemoteCameraPlatform_SwitchToRemoteCamera(NomaiRemoteCameraPlatform __instance)
+	private static bool SwitchToRemoteCamera(NomaiRemoteCameraPlatform __instance)
 	{
 		GlobalMessenger.FireEvent("EnterNomaiRemoteCamera");
 		__instance._slavePlatform.RevealFactID();
@@ -67,8 +67,8 @@ public static class ProjectionPoolSectorFix
 	}
 
 	[HarmonyPrefix]
-	[HarmonyPatch(typeof(NomaiRemoteCameraPlatform), nameof(NomaiRemoteCameraPlatform.SwitchToPlayerCamera))]
-	private static bool NomaiRemoteCameraPlatform_SwitchToPlayerCamera(NomaiRemoteCameraPlatform __instance)
+	[HarmonyPatch(nameof(NomaiRemoteCameraPlatform.SwitchToPlayerCamera))]
+	private static bool SwitchToPlayerCamera(NomaiRemoteCameraPlatform __instance)
 	{
 		if (__instance._slavePlatform._visualSector != null)
 		{
@@ -114,8 +114,8 @@ public static class ProjectionPoolSectorFix
 	}
 
 	[HarmonyPrefix]
-	[HarmonyPatch(typeof(NomaiRemoteCameraPlatform), nameof(NomaiRemoteCameraPlatform.VerifySectorOccupancy))]
-	private static bool NomaiRemoteCameraPlatform_VerifySectorOccupancy(NomaiRemoteCameraPlatform __instance)
+	[HarmonyPatch(nameof(NomaiRemoteCameraPlatform.VerifySectorOccupancy))]
+	private static bool VerifySectorOccupancy(NomaiRemoteCameraPlatform __instance)
 	{
 		if (__instance._slavePlatform._visualSector != null && !__instance._slavePlatform._visualSector.ContainsOccupant(DynamicOccupant.Player))
 		{
