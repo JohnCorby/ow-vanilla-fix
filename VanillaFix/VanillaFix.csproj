@@ -12,8 +12,8 @@
     <DebugType>none</DebugType>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="OWML" Version="2.9.5" />
-    <PackageReference Include="OuterWildsGameLibs" Version="1.1.13.457" />
+    <PackageReference Include="OWML" Version="2.14.0" />
+    <PackageReference Include="OuterWildsGameLibs" Version="1.1.15.1018" />
   </ItemGroup>
   <ItemGroup>
     <None Include="default-config.json">
