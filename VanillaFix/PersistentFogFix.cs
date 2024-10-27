@@ -25,6 +25,8 @@ public static class PersistentFogFix
         // Doing this instead to not skip the method, it'll still go on to NRE but it'll work
         // Also, this only seems to happen on TH, probably because it has a bramble seed
 
+        // just kidding it actually doesnt NRE here even if you dont return false. i have no idea how
+
         if (__instance._closestFogWarp == null)
         {
             __instance._fogFraction = 0f;
