@@ -14,5 +14,5 @@ public static class SignalscopeUIFix
 {
 	[HarmonyPostfix]
 	[HarmonyPatch(nameof(SignalscopeUI.Start))]
-	private static void Start(SignalscopeUI __instance) => __instance.SetWaveformUIActive(false);
+	private static void Start(SignalscopeUI __instance) => __instance._waveformRenderer.enabled = false;
 }
