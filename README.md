@@ -14,3 +14,5 @@ Fixes some vanilla bugs in Outer Wilds
 - [Fixes an issue where probe would sometimes stretch when anchored to an object](https://github.com/JohnCorby/ow-vanilla-fix/issues/7). This isn't a perfect solution, but it is not possible to do it better in unity.
 - Fixes an issue where fog shaders are not updated when the `PlayerFogWarpDetector` is disabled (resulted in permanent fog on screen if you leave Bramble too quickly, ie, by teleporting) (credit to xen)
 - [Fixes an issue where dialogue nodes basically ignore persistent conditions](https://github.com/JohnCorby/ow-vanilla-fix/issues/17) 
+- [Fix weird floating piece of signalscope UI](https://github.com/JohnCorby/ow-vanilla-fix/pull/28) (credit to Spacemike)
+- [Fix line wrapping in CJK languages](https://github.com/JohnCorby/ow-vanilla-fix/pull/28) (credit to orclecle)
