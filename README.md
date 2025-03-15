@@ -16,3 +16,4 @@ Fixes some vanilla bugs in Outer Wilds
 - [Fixes an issue where dialogue nodes basically ignore persistent conditions](https://github.com/JohnCorby/ow-vanilla-fix/issues/17) 
 - [Fix weird floating piece of signalscope UI](https://github.com/JohnCorby/ow-vanilla-fix/pull/28) (credit to Spacemike)
 - [Fix line wrapping in CJK languages](https://github.com/JohnCorby/ow-vanilla-fix/pull/28) (credit to orclecle)
+- [Fix noise sensor using the wrong position for the object making the noise](https://github.com/JohnCorby/ow-vanilla-fix/pull/30) (credit to Etherpod)
