@@ -4,6 +4,7 @@ using UnityEngine;
 namespace VanillaFix;
 
 /// <summary>
+/// CREDIT TO ETHERPOD FOR THIS FIX
 /// origin guy here uses local center of mass instead of world. this usually returns 0 or near-0.
 /// doesnt break in base game because player world position is at 0 (because universe recenter blah blah) but this isnt the case for other things obviously.
 /// </summary>
