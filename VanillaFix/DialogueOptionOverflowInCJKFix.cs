@@ -6,6 +6,8 @@ namespace VanillaFix;
 /// UiSizeSetterDialogueOption changes the dialogue option's text's horizontalOverflow as Overflow when the language is CJK (Chinese, Japanese, or Koreans).
 /// This causes an overflow problem when the dialogue option's text is so long.
 /// See https://github.com/JohnCorby/ow-vanilla-fix/issues/26
+///
+/// they do a manual overflow here on purpose because appraently the automatic one is weird? idk it seems to work enough here
 /// </summary>
 [HarmonyPatch]
 public class DialogueOptionOverflowInCJKFix
