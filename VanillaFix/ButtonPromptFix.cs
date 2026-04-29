@@ -25,5 +25,32 @@ public static class ButtonPromptFix
 		ButtonPromptLibrary.s_keyCodeDict[KeyCode.BackQuote] = Mod.BackquoteButton;
 		ButtonPromptLibrary.s_keyCodeDict[KeyCode.LeftApple] = Mod.AppleButton;
 		ButtonPromptLibrary.s_keyCodeDict[KeyCode.RightApple] = Mod.AppleButton;
+
+		ButtonPromptLibrary.s_axisTextureDict.Add(Mod.MouseDownScroll, AxisIdentifier.KEYBD_MOUSEWHEEL);
+		ButtonPromptLibrary.s_axisTextureDict.Add(Mod.MouseUpScroll, AxisIdentifier.KEYBD_MOUSEWHEEL);
+		ButtonPromptLibrary.s_axisTextureDict.Add(Mod.MouseYScroll, AxisIdentifier.KEYBD_MOUSEWHEEL);
+	}
+
+	[HarmonyPrefix]
+	[HarmonyPatch(nameof(ButtonPromptLibrary.GetAxisTexture), typeof(AxisIdentifier), typeof(int))]
+	private static bool GetAxisTexture_AxisDirection_Postfix(AxisIdentifier axisId, int axisDirection, ref Texture2D __result)
+	{
+		if (axisId == AxisIdentifier.KEYBD_MOUSEWHEEL)
+		{
+			if (axisDirection == -1)
+			{
+				__result = Mod.MouseDownScroll;
+			}
+			else if (axisDirection == 1)
+			{
+				__result = Mod.MouseUpScroll;
+			}
+			else
+			{
+				__result = Mod.MouseYScroll;
+			}
+			return false;
+		}
+		return true;
 	}
 }

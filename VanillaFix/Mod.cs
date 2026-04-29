@@ -8,14 +8,23 @@ namespace VanillaFix;
 
 public class Mod : ModBehaviour
 {
+	public static Mod Instance { get; private set; }
+
 	public static Texture2D EqualsButton { get; private set; }
 	public static Texture2D CommaButton { get; private set; }
 	public static Texture2D PeriodButton { get; private set; }
 	public static Texture2D AltGrButton { get; private set; }
 	public static Texture2D BackquoteButton { get; private set; }
 	public static Texture2D AppleButton { get; private set; }
+	public static Texture2D MouseUpScroll { get; private set; }
+	public static Texture2D MouseDownScroll { get; private set; }
+	public static Texture2D MouseYScroll { get; private set; }
 
-	private void Awake() => Harmony.CreateAndPatchAll(Assembly.GetExecutingAssembly());
+	private void Awake()
+	{
+		Instance = this;
+		Harmony.CreateAndPatchAll(Assembly.GetExecutingAssembly());
+	}
 
 	private void Start()
 	{
@@ -25,6 +34,9 @@ public class Mod : ModBehaviour
 		AltGrButton = CreateButtonTexture("Keyboard_Black_AltGr");
 		BackquoteButton = CreateButtonTexture("Keyboard_Black_Backquote");
 		AppleButton = CreateButtonTexture("Keyboard_Black_Apple");
+		MouseUpScroll = CreateButtonTexture("Keyboard_Black_Mouse_Up_Scroll");
+		MouseDownScroll = CreateButtonTexture("Keyboard_Black_Mouse_Down_Scroll");
+		MouseYScroll = CreateButtonTexture("Keyboard_Black_Mouse_Y_Scroll");
 	}
 
 	private Texture2D CreateButtonTexture(string name)
